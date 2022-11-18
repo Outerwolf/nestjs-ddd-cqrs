@@ -6,7 +6,6 @@ export interface UserProps {
     username: string;
     password: string;
     role?: string;
-    isEmailVerified?: boolean;
     isAdminUser?: boolean;
     accessToken?: string;
     refreshToken?: string;
@@ -22,7 +21,6 @@ export class User extends AggregateRoot<UserProps> {
     private email: string;
     private username: string;
     private password: string;
-    private isEmailVerified?: boolean;
     private role: string;
     private isAdminUser?: boolean;
     private accessToken?: string;
@@ -38,7 +36,6 @@ export class User extends AggregateRoot<UserProps> {
         this.email = props.email;
         this.username = props.username;
         this.password = props.password;
-        this.isEmailVerified = props.isEmailVerified;
         this.isAdminUser = props.isAdminUser;
         this.accessToken = props.accessToken;
         this.refreshToken = props.refreshToken;
@@ -59,9 +56,48 @@ export class User extends AggregateRoot<UserProps> {
     getUsername(): string {
         return this.username;
     }
-
-    setPasword(password: string): void {
+    getUserPassword(): string {
+        return this.password;
+    }
+    setPassword(password: string): void {
         this.password = password;
+    }
+    getIsAdminUser() {
+        return this.isAdminUser;
+    }
+    setIsAdminUser(isAdminUser: boolean): void {
+        this.isAdminUser = isAdminUser;
+    }
+    getAccessToken(): string {
+        return this.accessToken;
+    }
+    setAccessToken(accessToken: string): void {
+        this.accessToken = accessToken;
+    }
+    getRefreshToken(): string {
+        return this.refreshToken;
+    }
+    setRefreshToken(refreshToken: string): void {
+        this.refreshToken = refreshToken;
+    }
+    getIsDeleted(): boolean {
+        return this.isDeleted;
+    }
+    setIsDeleted(isDeleted: boolean): void {
+        this.isDeleted = isDeleted;
+    }
+    getLastLogin(): Date {
+        return this.lastLogin;
+    }
+    setLastLogin(lastLogin: Date): void {
+        this.lastLogin = lastLogin;
+    }
+
+    getCreatedDate(): Date {
+        return this.createdDate;
+    }
+    getModifedDate(): Date {
+        return this.modifiedDate;
     }
 
     static create(props: UserProps, id?: UniqueEntityID): User {

@@ -10,16 +10,10 @@ export class ControllerContextController {
             username: "test",
             password: "1234",
             email: "",
-            isEmailVerified: false,
             isAdminUser: false,
-            accessToken: "",
-            refreshToken: "",
-            isDeleted: false,
-            lastLogin: new Date(),
-            createdDate: new Date(),
         };
-        const user = User.create(userProps, new UniqueEntityID());
-        console.log(user);
+        const user = User.create(userProps);
+        console.log(user.getID());
         return "Hello World!";
     }
 }
