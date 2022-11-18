@@ -19,7 +19,7 @@ export class Password extends ValueObject<PasswordProps> {
         }
         const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/g;
         if (regex.test(props.password)) {
-            throw new HttpException("Password is invalid", HttpStatus.BAD_REQUEST);
+            throw new HttpException("Password is not a secure one", HttpStatus.BAD_REQUEST);
         }
         return new Password(props);
     }

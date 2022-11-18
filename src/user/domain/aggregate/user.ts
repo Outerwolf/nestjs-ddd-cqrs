@@ -61,36 +61,42 @@ export class User extends AggregateRoot<UserProps> {
     }
     setPassword(password: string): void {
         this.password = password;
+        this.modifiedDate = new Date();
     }
     getIsAdminUser() {
         return this.isAdminUser;
     }
     setIsAdminUser(isAdminUser: boolean): void {
         this.isAdminUser = isAdminUser;
+        this.modifiedDate = new Date();
     }
     getAccessToken(): string {
         return this.accessToken;
     }
     setAccessToken(accessToken: string): void {
         this.accessToken = accessToken;
+        this.modifiedDate = new Date();
     }
     getRefreshToken(): string {
         return this.refreshToken;
     }
     setRefreshToken(refreshToken: string): void {
         this.refreshToken = refreshToken;
+        this.modifiedDate = new Date();
     }
     getIsDeleted(): boolean {
         return this.isDeleted;
     }
     setIsDeleted(isDeleted: boolean): void {
         this.isDeleted = isDeleted;
+        this.modifiedDate = new Date();
     }
     getLastLogin(): Date {
         return this.lastLogin;
     }
     setLastLogin(lastLogin: Date): void {
         this.lastLogin = lastLogin;
+        this.modifiedDate = new Date();
     }
 
     getCreatedDate(): Date {
