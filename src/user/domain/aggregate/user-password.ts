@@ -14,15 +14,12 @@ export class Password extends ValueObject<PasswordProps> {
     }
 
     public static create(props: PasswordProps): Password {
-        const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/g;
-        if (!props.password) {
-            throw new HttpException("Password is required", HttpStatus.BAD_REQUEST);
+        if (!props.password && props.password.length < this.minLength) {
+            throw new HttpException("Password should have more or equal than 8 characters", HttpStatus.BAD_REQUEST);
         }
+        const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/g;
         if (regex.test(props.password)) {
             throw new HttpException("Password is invalid", HttpStatus.BAD_REQUEST);
-        }
-        if (props.password.length < this.minLength || props.password.length > this.maxLength) {
-            throw new HttpException("Invalid Password length", HttpStatus.BAD_REQUEST);
         }
         return new Password(props);
     }
