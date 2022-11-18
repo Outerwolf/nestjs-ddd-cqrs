@@ -1,11 +1,11 @@
 import { Module } from "@nestjs/common";
 import { ApiContextModule } from "./api/api-user.module";
-import { ApplicationContextModule } from "./application/application-context.module";
-import { DomainContextModule } from "./domain/domain-context.module";
-import { InfrastructureContextModule } from "./infrastructure/infrastructure-context.module";
+import { ApplicationUserModule } from "./application/application-user.module";
+import { DomainUserModule } from "./domain/domain-user.module";
+import { InfrastructureUserModule } from "./infrastructure/infrastructure-user.module";
 
 @Module({
-    imports: [ApiContextModule, ApplicationContextModule, DomainContextModule, InfrastructureContextModule],
+    imports: [ApiContextModule, ApplicationUserModule, DomainUserModule, InfrastructureUserModule],
     controllers: [],
     providers: [],
 })
