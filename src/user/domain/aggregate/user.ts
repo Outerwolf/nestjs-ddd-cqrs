@@ -18,31 +18,12 @@ export interface UserProps {
 export class User extends AggregateRoot<UserProps> {
     private readonly id: UniqueEntityID;
 
-    private email: string;
-    private username: string;
-    private password: string;
-    private role: string;
-    private isAdminUser?: boolean;
-    private accessToken?: string;
-    private refreshToken?: string;
-    private isDeleted?: boolean;
-    private lastLogin?: Date;
-    private createdDate: Date;
-    private modifiedDate: Date;
+    public readonly props: UserProps;
 
     private constructor(props: UserProps, id?: UniqueEntityID) {
         super();
         this.id = id ? id : new UniqueEntityID();
-        this.email = props.email;
-        this.username = props.username;
-        this.password = props.password;
-        this.isAdminUser = props.isAdminUser;
-        this.accessToken = props.accessToken;
-        this.refreshToken = props.refreshToken;
-        this.isDeleted = props.isDeleted;
-        this.lastLogin = props.lastLogin;
-        this.createdDate = props.createdDate ? props.createdDate : undefined;
-        this.modifiedDate = props.modifiedDate;
+        this.props = props;
     }
 
     getID(): string {
@@ -50,60 +31,60 @@ export class User extends AggregateRoot<UserProps> {
     }
 
     getEmail(): string {
-        return this.email;
+        return this.props.email;
     }
 
     getUsername(): string {
-        return this.username;
+        return this.props.username;
     }
     getUserPassword(): string {
-        return this.password;
+        return this.props.password;
     }
     setPassword(password: string): void {
-        this.password = password;
-        this.modifiedDate = new Date();
+        this.props.password = password;
+        this.props.modifiedDate = new Date();
     }
     getIsAdminUser() {
-        return this.isAdminUser;
+        return this.props.isAdminUser;
     }
     setIsAdminUser(isAdminUser: boolean): void {
-        this.isAdminUser = isAdminUser;
-        this.modifiedDate = new Date();
+        this.props.isAdminUser = isAdminUser;
+        this.props.modifiedDate = new Date();
     }
     getAccessToken(): string {
-        return this.accessToken;
+        return this.props.accessToken;
     }
     setAccessToken(accessToken: string): void {
-        this.accessToken = accessToken;
-        this.modifiedDate = new Date();
+        this.props.accessToken = accessToken;
+        this.props.modifiedDate = new Date();
     }
     getRefreshToken(): string {
-        return this.refreshToken;
+        return this.props.refreshToken;
     }
     setRefreshToken(refreshToken: string): void {
-        this.refreshToken = refreshToken;
-        this.modifiedDate = new Date();
+        this.props.refreshToken = refreshToken;
+        this.props.modifiedDate = new Date();
     }
     getIsDeleted(): boolean {
-        return this.isDeleted;
+        return this.props.isDeleted;
     }
     setIsDeleted(isDeleted: boolean): void {
-        this.isDeleted = isDeleted;
-        this.modifiedDate = new Date();
+        this.props.isDeleted = isDeleted;
+        this.props.modifiedDate = new Date();
     }
     getLastLogin(): Date {
-        return this.lastLogin;
+        return this.props.lastLogin;
     }
     setLastLogin(lastLogin: Date): void {
-        this.lastLogin = lastLogin;
-        this.modifiedDate = new Date();
+        this.props.lastLogin = lastLogin;
+        this.props.modifiedDate = new Date();
     }
 
     getCreatedDate(): Date {
-        return this.createdDate;
+        return this.props.createdDate;
     }
     getModifedDate(): Date {
-        return this.modifiedDate;
+        return this.props.modifiedDate;
     }
 
     static create(props: UserProps, id?: UniqueEntityID): User {

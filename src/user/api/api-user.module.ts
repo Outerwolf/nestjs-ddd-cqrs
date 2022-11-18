@@ -1,9 +1,9 @@
 import { Module } from "@nestjs/common";
-import { ControllerContextController } from "./controllers/controller-user.controller";
+import { UserController } from "./controllers/user.controller";
 
 @Module({
     imports: [],
-    controllers: [ControllerContextController],
+    controllers: [UserController],
     providers: [],
 })
 export class ApiContextModule {}
