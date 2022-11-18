@@ -1,5 +1,5 @@
 import { Module } from "@nestjs/common";
-import { ApiContextModule } from "./api/api-context.module";
+import { ApiContextModule } from "./api/api-user.module";
 import { ApplicationContextModule } from "./application/application-context.module";
 import { DomainContextModule } from "./domain/domain-context.module";
 import { InfrastructureContextModule } from "./infrastructure/infrastructure-context.module";
@@ -9,4 +9,4 @@ import { InfrastructureContextModule } from "./infrastructure/infrastructure-con
     controllers: [],
     providers: [],
 })
-export class ContextModule {}
+export class UserModule {}
