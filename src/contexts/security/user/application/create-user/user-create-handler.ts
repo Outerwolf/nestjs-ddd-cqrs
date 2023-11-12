@@ -1,7 +1,7 @@
 import {CommandHandler, ICommandHandler} from "@nestjs/cqrs";
 import {UserCreateCommand} from "./user-create-command";
 import {PinoLogger} from "nestjs-pino";
-import {UserCreator} from "../user-creator";
+import {UserCreator} from "./user-creator";
 
 @CommandHandler(UserCreateCommand)
 export class UserCreateHandler implements ICommandHandler<UserCreateCommand> {
