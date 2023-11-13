@@ -9,6 +9,6 @@ export class UserCreateHandler implements ICommandHandler<UserCreateCommand> {
         this.logger.setContext(UserCreateHandler.name)
     }
     execute(command: UserCreateCommand): Promise<void> {
-        return this.userCreator.execute(command.id, command.username, command.password);
+        return this.userCreator.execute(command.username, command.password, command.role);
     }
 }
